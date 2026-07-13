@@ -1,24 +1,46 @@
-import { Routes, Route } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
+
+import MainLayout from "../layouts/MainLayout";
 
 import Home from "../pages/Home/Home";
-
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 
-export default function AppRoutes() {
-  return (
-    <Routes>
-      <Route path="/" element={<Home />} />
 
-      <Route path="/login" element={<Login />} />
+const router = createBrowserRouter([
+  {
+    element: <MainLayout />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
 
-      <Route path="/register" element={<Register />} />
+      // Sonra əlavə olunacaq
+      // {
+      //   path: "/cars",
+      //   element: <Cars />,
+      // },
+      //
+      // {
+      //   path: "/cars/:id",
+      //   element: <Details />,
+      // },
+    ],
+  },
 
-      {/* Sonra əlavə edəcəyik */}
-      {/* <Route path="/cars" element={<Cars />} /> */}
-      {/* <Route path="/cars/:id" element={<Details />} /> */}
-      {/* <Route path="/about" element={<About />} /> */}
-      {/* <Route path="/contact" element={<Contact />} /> */}
-    </Routes>
-  );
-}
+
+  // Layout-dan kənar səhifələr
+  {
+    path: "/login",
+    element: <Login />,
+  },
+
+  {
+    path: "/register",
+    element: <Register />,
+  },
+]);
+
+
+export default router;

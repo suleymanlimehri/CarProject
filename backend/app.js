@@ -9,6 +9,7 @@ import connectDB from "./config/db.js";
 import carRoutes from "./routes/carRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
+import seedRoutes from "./routes/seedRoutes.js";
 
 import {
   notFound,
@@ -46,10 +47,9 @@ app.get("/", (req, res) => {
 
 // API Routes
 app.use("/api/auth", authRoutes);
-
 app.use("/api/users", userRoutes);
-
 app.use("/api/cars", carRoutes);
+app.use("/api/seed", seedRoutes);
 
 // Error Middlewares
 app.use(notFound);
